@@ -117,17 +117,24 @@
         this.filterMatch = false
 
         if (this.tableFilter.length > 0) {
-          for (let table of this.tables) {
-            if (table.Name.includes(this.tableFilter)) {
-              this.filteredTables.push(table)
-            }
-            if (table.Name === this.tableFilter) {
-              this.filterMatch = true
-            }
-          }
+          let tb = this.tableFilter
+          this.filteredTables = this.tables.filter(function (table) {
+            return table.Name.includes(tb)
+          })
         } else {
           this.filteredTables = this.tables
         }
+        //   for (let table of this.tables) {
+        //     if (table.Name.includes(this.tableFilter)) {
+        //       this.filteredTables.push(table)
+        //     }
+        //     if (table.Name === this.tableFilter) {
+        //       this.filterMatch = true
+        //     }
+        //   }
+        // } else {
+        //   this.filteredTables = this.tables
+        // }
       },
       editTable: function (e) {
         let table = e.target.value
